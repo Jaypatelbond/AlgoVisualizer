@@ -2,21 +2,26 @@ import os
 import streamlit as st
 import importlib.util
 
-# Function to import and execute the main function from a Python file
 def execute_main(file_path):
     # Get the file name and module name
     file_name = os.path.basename(file_path)
     module_name = file_name[:-3]
-    
-    # Load the module
-    spec = importlib.util.spec_from_file_location(module_name, file_path)
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    
-    # Call the main function
-    output = module.main()
-    
-    return output
+
+    try:
+        # Load the module
+        spec = importlib.util.spec_from_file_location(module_name, file_path)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+
+        # Check if the main function exists in the module
+        if hasattr(module, 'main') and callable(module.main):
+            # Call the main function
+            output = module.main()
+            return output
+        else:
+            return 'Error: The main function does not exist in the module.'
+    except Exception as e:
+        return f'Error: {str(e)}'
 
 # Function to read the content of a file
 def read_file(filename):
