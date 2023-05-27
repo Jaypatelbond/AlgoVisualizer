@@ -1,4 +1,4 @@
-def helper(arr, perm, perms):
+def helper(arr: list, perm: list, perms: list) -> None:
     """
     Recursively generates permutations of an array.
 
@@ -11,7 +11,8 @@ def helper(arr, perm, perms):
         None
     """
     if len(arr) == 0:
-        perms.append(perm)
+        # Make a copy of the permutation to avoid appending the same list multiple times.
+        perms.append(perm.copy())
     else:
         for ele in arr:
             new_list = arr.copy()
@@ -21,7 +22,7 @@ def helper(arr, perm, perms):
             helper(new_list, new_perm, perms)
 
 
-def getPermutations(array):
+def get_permutations(array: list) -> list:
     """
     Generates all permutations of an array.
 
@@ -38,9 +39,9 @@ def getPermutations(array):
     return perms
 
 
-def main():
+def main() -> list:
     """
     Main method to call the program and demonstrate the functionality.
     """
     array = [1, 2, 3]
-    return getPermutations(array)
+    return get_permutations(array)

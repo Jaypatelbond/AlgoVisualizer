@@ -1,6 +1,9 @@
-def generate_sum_of_subsets_soln(nums: list[int], max_sum: int) -> list[list[int]]:
-    result: list[list[int]] = []
-    path: list[int] = []
+from typing import List
+
+
+def generate_sum_of_subsets_soln(nums: List[int], max_sum: int) -> List[List[int]]:
+    result: List[List[int]] = []
+    path: List[int] = []
     num_index = 0
     remaining_nums_sum = sum(nums)
     create_state_space_tree(nums, max_sum, num_index,
@@ -9,20 +12,18 @@ def generate_sum_of_subsets_soln(nums: list[int], max_sum: int) -> list[list[int
 
 
 def create_state_space_tree(
-    nums: list[int],
+    nums: List[int],
     max_sum: int,
     num_index: int,
-    path: list[int],
-    result: list[list[int]],
+    path: List[int],
+    result: List[List[int]],
     remaining_nums_sum: int,
 ) -> None:
     """
     Creates a state space tree to iterate through each branch using DFS.
     It terminates the branching of a node when any of the two conditions
     given below satisfy.
-    This algorithm follows depth-fist-search and backtracks when the node is not
-    branchable.
-
+    This algorithm follows depth-first search and backtracks when the node is not branchable.
     """
     if sum(path) > max_sum or (remaining_nums_sum + sum(path)) < max_sum:
         return
@@ -34,13 +35,13 @@ def create_state_space_tree(
             nums,
             max_sum,
             index + 1,
-            [*path, nums[index]],
+            path + [nums[index]],
             result,
             remaining_nums_sum - nums[index],
         )
 
 
-def main():
+def main() -> List[List[int]]:
     nums = [3, 34, 4, 12, 5, 2]
     max_sum = 9
     return generate_sum_of_subsets_soln(nums, max_sum)
