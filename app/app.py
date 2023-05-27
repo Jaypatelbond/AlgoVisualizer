@@ -2,6 +2,7 @@ import os
 import streamlit as st
 import importlib.util
 
+
 def execute_main(file_path):
     # Get the file name and module name
     file_name = os.path.basename(file_path)
@@ -24,10 +25,13 @@ def execute_main(file_path):
         return f'Error: {str(e)}'
 
 # Function to read the content of a file
+
+
 def read_file(filename):
     with open(filename) as f:
         code = f.read()
     return code
+
 
 # Set the path to the algos directory
 curr_dir = os.path.dirname(__file__)
