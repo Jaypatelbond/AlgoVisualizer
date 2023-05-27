@@ -36,8 +36,6 @@ def N_queen(n):
 
 
 def main():
-    return N_queen(N)
+    if N_queen(N):
+        return board
 
-
-if __name__ == "__main__":
-    main()
