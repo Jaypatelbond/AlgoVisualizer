@@ -20,4 +20,3 @@ def minimum_waiting_time(queries: list[int]) -> int:
 
 def main():
     return minimum_waiting_time([3, 2, 1, 2, 6])
-    

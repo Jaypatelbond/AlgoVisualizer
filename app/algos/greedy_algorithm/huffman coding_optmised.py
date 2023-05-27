@@ -4,6 +4,8 @@ from collections import defaultdict
 string = 'DORAISWAMI'
 
 # Defining a class for the nodes of the Huffman tree
+
+
 class NodeTree(object):
 
     def __init__(self, char=None, freq=None, left=None, right=None):
@@ -27,21 +29,21 @@ def huffman_code_tree(node, code='', code_dict=defaultdict(str)):
 
 
 # Calculating the frequency of each character in the string
-# Use a defaultdict instead of a standard dictionary to calculate the character frequency. 
+# Use a defaultdict instead of a standard dictionary to calculate the character frequency.
 # This will eliminate the need for checking if a key exists in the dictionary before incrementing its value.#
 freq = defaultdict(int)
 for c in string:
     freq[c] += 1
 
 # Building the Huffman tree using a priority queue (binary heap implementation)
-# Use a heapq to sort the frequency dictionary by descending order of frequency. 
+# Use a heapq to sort the frequency dictionary by descending order of frequency.
 # This will avoid sorting the entire dictionary using the sorted function, which has a time complexity of O(n log n).
 pq = [NodeTree(char=c, freq=f) for c, f in freq.items()]
 heapq.heapify(pq)
 
 
-# Instead of using a NodeTree class, 
-# use a tuple to represent each node in the Huffman tree. 
+# Instead of using a NodeTree class,
+# use a tuple to represent each node in the Huffman tree.
 # This will simplify the code and potentially reduce memory usage.
 while len(pq) > 1:
     node1 = heapq.heappop(pq)
@@ -53,6 +55,8 @@ while len(pq) > 1:
 huffmanCode = huffman_code_tree(pq[0])
 
 # Define the main function
+
+
 def main():
     result = '----------------------\n'
     result += ' Char | Huffman code \n'
@@ -68,12 +72,7 @@ if __name__ == '__main__':
     print(output)
 
 
-#This implementation uses a priority queue (binary heap implementation) to build the Huffman tree in O(nlogk) time, 
-#and bit manipulation to generate the Huffman codes. It also uses a dictionary to store the frequency counts, which 
-#improves the lookup time. Overall, these optimizations can make the algorithm faster and more memory-efficient 
-#for large input strings.
-
-
-
-
-
+# This implementation uses a priority queue (binary heap implementation) to build the Huffman tree in O(nlogk) time,
+# and bit manipulation to generate the Huffman codes. It also uses a dictionary to store the frequency counts, which
+# improves the lookup time. Overall, these optimizations can make the algorithm faster and more memory-efficient
+# for large input strings.
