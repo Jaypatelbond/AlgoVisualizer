@@ -35,7 +35,7 @@ env:
   ECR_REPOSITORY: algorithm # set this to your Amazon ECR repository name
   ECS_SERVICE: arn:aws:ecs:us-east-2:463800430537:cluster/algorithm # set this to your Amazon ECS service name
   ECS_CLUSTER: algorithm # set this to your Amazon ECS cluster name
-  ECS_TASK_DEFINITION: task.json # set this to the path to your Amazon ECS task definition
+  ECS_TASK_DEFINITION: .github/task.json # set this to the path to your Amazon ECS task definition
   CONTAINER_NAME:
     algorithm # set this to the name of the container in the
     # containerDefinitions section of your task definition
