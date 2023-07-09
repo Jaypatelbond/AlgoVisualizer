@@ -2,6 +2,8 @@
 
 The Algorithm Executor is a web application that allows you to execute various algorithms. It provides a user-friendly interface where you can select an algorithm type and an algorithm file to execute.
 
+![App Preview](https://github.com/Himanshutomar31/AlgoVisualizer/blob/main/images/image.png)
+
 ## Features
 
 - Selection of algorithm types:
