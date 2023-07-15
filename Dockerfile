@@ -12,3 +12,5 @@ RUN pip install streamlit
 COPY app/algos /app/algos
 
 CMD ["streamlit", "run", "app.py"]
+
+EXPOSE  80
