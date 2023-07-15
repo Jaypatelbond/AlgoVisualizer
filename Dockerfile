@@ -10,7 +10,6 @@ COPY app/app.py .
 RUN pip install streamlit
 
 COPY app/algos /app/algos
-
-CMD ["streamlit", "run", "app.py"]
-
 EXPOSE  80
+
+CMD ["streamlit", "run", "app.py", "--server.port", "80"]
