@@ -90,7 +90,7 @@
     "memory": "2048",
     "runtimePlatform": {
         "cpuArchitecture": "X86_64",
-        "operatingSystemFamily": "LINUX" 
+        "operatingSystemFamily": "LINUX"
     },
     "registeredAt": "2023-07-15T10:26:50.896Z",
     "registeredBy": "arn:aws:iam::532645449571:root",
