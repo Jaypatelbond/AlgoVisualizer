@@ -1,15 +1,29 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:074002766010:task-definition/algorithm:1",
+    "taskDefinitionArn": "arn:aws:ecs:ap-south-1:532645449571:task-definition/algovisualizer:1",
     "containerDefinitions": [
         {
-            "name": "algorithm",
-            "image": "074002766010.dkr.ecr.us-east-2.amazonaws.com/algorithm:latest",
+            "name": "algovisualizer",
+            "image": "532645449571.dkr.ecr.ap-south-1.amazonaws.com/algovisualizer",
             "cpu": 0,
             "portMappings": [
                 {
-                    "name": "algorithm-80-tcp",
+                    "name": "algovisualizer-80-tcp",
                     "containerPort": 80,
                     "hostPort": 80,
+                    "protocol": "tcp",
+                    "appProtocol": "http"
+                },
+                {
+                    "name": "algovisualizer-8080-tcp",
+                    "containerPort": 8080,
+                    "hostPort": 8080,
+                    "protocol": "tcp",
+                    "appProtocol": "http"
+                },
+                {
+                    "name": "algovisualizer-8051-tcp",
+                    "containerPort": 8051,
+                    "hostPort": 8051,
                     "protocol": "tcp",
                     "appProtocol": "http"
                 }
@@ -19,18 +33,36 @@
             "environmentFiles": [],
             "mountPoints": [],
             "volumesFrom": [],
-            "ulimits": []
+            "ulimits": [],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-create-group": "true",
+                    "awslogs-group": "/ecs/algovisualizer",
+                    "awslogs-region": "ap-south-1",
+                    "awslogs-stream-prefix": "ecs"
+                }
+            }
         }
     ],
-    "family": "algorithm",
-    "executionRoleArn": "arn:aws:iam::074002766010:role/ecsTaskExecutionRole",
+    "family": "algovisualizer",
+    "executionRoleArn": "arn:aws:iam::532645449571:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
     "revision": 1,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
         {
+            "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+        },
+        {
+            "name": "ecs.capability.execution-role-awslogs"
+        },
+        {
             "name": "com.amazonaws.ecs.capability.ecr-auth"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
         },
         {
             "name": "ecs.capability.execution-role-ecr-pull"
@@ -40,22 +72,27 @@
         },
         {
             "name": "ecs.capability.task-eni"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
         }
     ],
     "placementConstraints": [],
     "compatibilities": [
-        "EC2"
+        "EC2",
+        "FARGATE"
     ],
     "requiresCompatibilities": [
-        "EC2"
+        "EC2",
+        "FARGATE"
     ],
     "cpu": "1024",
-    "memory": "1024",
+    "memory": "2048",
     "runtimePlatform": {
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2023-07-15T09:32:39.889Z",
-    "registeredBy": "arn:aws:iam::074002766010:root",
+    "registeredAt": "2023-07-15T10:26:50.896Z",
+    "registeredBy": "arn:aws:iam::532645449571:root",
     "tags": []
 }
