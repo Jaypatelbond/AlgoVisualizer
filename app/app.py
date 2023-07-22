@@ -51,9 +51,12 @@ st.set_page_config(page_title="Algorithm Executor")
 # Create the sidebar menu with algorithm selection
 algo_type = st.sidebar.radio("Select algorithm type", list(algos.keys()))
 
-# Get the list of files for the selected algorithm type
+# Get the list of files for the selected algorithm type and filter out '__pycache__'
 algo_dir = os.path.join(algo_path, algos[algo_type])
-algo_files = os.listdir(algo_dir)
+algo_files = [f for f in os.listdir(algo_dir) if not f.startswith('__pycache__')]
+
+# Create the dropdown menu with algorithm file selection
+selected_file = st.selectbox("Select algorithm file", algo_files)
 
 # Create the dropdown menu with algorithm file selection
 selected_file = st.selectbox("Select algorithm file", algo_files)
